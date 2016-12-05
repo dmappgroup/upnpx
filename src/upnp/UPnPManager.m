@@ -131,6 +131,7 @@ static NSTimeInterval const kSSDPRestartDelay = 0.1;
 
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(kSSDPRestartDelay * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
             [SSDP startSSDP];
+            [SSDP searchSSDP];
             _inProcessOfRestart = NO;
 
             if (completionBlock != nil) {
