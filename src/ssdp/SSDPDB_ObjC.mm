@@ -155,7 +155,7 @@ private:
 }
 
 - (void)clearDevices {
-    [self lock];
+//    [self lock];
 
     //Inform the listeners
     id <SSDPDB_ObjC_Observer> obs;
@@ -171,7 +171,7 @@ private:
         [obs SSDPDBUpdated:self];
     }
 
-    [self unlock];
+//    [self unlock];
 
     UPNP::GetInstance()->GetSSDP()->GetDB()->RemoveAllDevices();
 }
@@ -212,7 +212,7 @@ private:
         [self lock];
         [SSDPObjCDevices removeAllObjects];
         //Update the Obj-C Array
-        UPNP::GetInstance()->GetSSDP()->GetDB()->Lock();
+//        UPNP::GetInstance()->GetSSDP()->GetDB()->Lock();
         SSDPDBDevice* thisDevice = nil;
         std::vector<SSDPDBDevice*> devices;
         std::vector<SSDPDBDevice*>::const_iterator it;
@@ -223,7 +223,7 @@ private:
             [SSDPObjCDevices addObject:thisObjCDevice];
             [thisObjCDevice release];
         }
-        UPNP::GetInstance()->GetSSDP()->GetDB()->Unlock();
+//        UPNP::GetInstance()->GetSSDP()->GetDB()->Unlock();
 
         //Inform the listeners
         listeners = [mObservers objectEnumerator];
